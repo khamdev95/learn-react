@@ -5,12 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import {ThemeProvider} from './ThemeContext'
 import {StoreProvider} from './store'
+import router from './router';
+import { RouterProvider } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <StoreProvider>
-      <App />
-    </StoreProvider>
+    <RouterProvider router={router}>
+      <StoreProvider>
+        <App />
+      </StoreProvider>
+    </RouterProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

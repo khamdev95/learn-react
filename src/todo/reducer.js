@@ -38,4 +38,4 @@ const reducer = (state, action) => {
   return newState;
 };
 
-export default reducer();
+export default reducer;
