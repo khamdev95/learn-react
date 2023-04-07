@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { addTodo, addTodos } from "../../store/actions";
+import { addTodos } from "../../store/actions";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid'
 
 function CreateTodo() {
+  console.log('Create-Todo re-render');
   const [{}, dispatch] = useOutletContext();
   const [todo, setTodo] = useState('')
   const navigate = useNavigate();

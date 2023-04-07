@@ -12,6 +12,7 @@ function reducer(state, action) {
         todo: action.payload,
       };
     case ADD_TODOS:
+      localStorage.setItem('todos', JSON.stringify([...state.todos, action.payload]))
       return {
         ...state,
         todos: [...state.todos, action.payload],

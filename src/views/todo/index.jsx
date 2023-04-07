@@ -1,6 +1,7 @@
 import { Link, useOutletContext } from "react-router-dom";
 
 function Todo() {
+  console.log('Todo re-render');
   const [{todos}, dispatch] = useOutletContext();
   return (
     <>
@@ -19,7 +20,7 @@ function Todo() {
               <td>{todo.todo}</td>
               <td>{todo.status ? 'Done' : 'Pending'}</td>
               <td>
-                <button>Edit</button>
+                <Link to={`/todo/${todo.id}/edit`}>Edit</Link>
               </td>
             </tr>
           ))}

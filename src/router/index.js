@@ -8,6 +8,8 @@ import CreateUser from "../views/users/CreateUser";
 import { addAction, editLoader, editAction, detailLoader, detailAction } from "./users";
 import EditUser from "../views/users/EditUser";
 import ShowUser from "../views/users/ShowUser";
+import EditTodo from "../views/todo/EditTodo";
+import { editTodoLoader } from "./todos";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +46,11 @@ const router = createBrowserRouter([
       {
         path: '/create-todo',
         element: <CreateTodo/>
+      },
+      {
+        path: '/todo/:todoId/edit',
+        element: <EditTodo/>,
+        loader: editTodoLoader
       }
     ],
   },
