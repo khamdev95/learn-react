@@ -5,8 +5,9 @@ import HomePage from "../views/HomePage";
 // import CreateTodo from "../views/todo/CreateTodo";
 import Users from "../views/users";
 import CreateUser from "../views/users/CreateUser";
-import { addAction, editLoader, editAction } from "./users";
+import { addAction, editLoader, editAction, detailLoader, detailAction } from "./users";
 import EditUser from "../views/users/EditUser";
+import ShowUser from "../views/users/ShowUser";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,12 @@ const router = createBrowserRouter([
         loader: editLoader,
         action: editAction,
       },
+      {
+        path: "/user/:userId",
+        element: <ShowUser/>,
+        loader: detailLoader,
+        action: detailAction
+      }
     ],
   },
 ]);

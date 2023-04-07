@@ -1,7 +1,11 @@
-import { Form } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 
 
 function CreateUser() {
+  const navigate = useNavigate()
+  const handleClickBack = () => {
+    navigate('/')
+  }
   return (
     <>
       <h1>Create User</h1>
@@ -20,6 +24,9 @@ function CreateUser() {
         </p>
         <p>
           <button type="submit">Save</button>
+          <button onClick={handleClickBack}>
+            Back
+          </button>
         </p>
       </Form>
     </>

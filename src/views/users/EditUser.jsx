@@ -1,8 +1,11 @@
-import { Form, useLoaderData } from "react-router-dom";
+import { Form, useLoaderData, useNavigate } from "react-router-dom";
 
 function EditUser() {
   const {user} = useLoaderData();
-  console.log(user);
+  const navigate = useNavigate()
+  const handleClickBack = () => {
+    navigate('/')
+  }
   return (
     <>
       <h1>Edit User</h1>
@@ -21,6 +24,9 @@ function EditUser() {
         </p>
         <p>
           <button type="submit">Save</button>
+          <button onClick={handleClickBack}>
+            Back
+          </button>
         </p>
       </Form>
     </>

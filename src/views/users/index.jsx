@@ -6,6 +6,11 @@ function Users() {
     const users = JSON.parse(localStorage.getItem('users'))
     return users ?? [];
   })
+  const handleDeleteUser = (id) => {
+    const newUsers = users.filter(item => item.id != id)
+    localStorage.setItem('users', JSON.stringify(newUsers))
+    setUsers(newUsers)
+  }
   return (
     <>
       <h1>List User</h1>
@@ -29,7 +34,10 @@ function Users() {
               <Link to={`user/${item.id}/edit`} style={{paddingRight: 10}}>
                 Edit
               </Link>
-              <Link>
+              <Link to={`user/${item.id}`} style={{paddingRight: 10}}>
+                Detail
+              </Link>
+              <Link onClick={() => handleDeleteUser(item.id)}>
                 Delete
               </Link>
             </td>
