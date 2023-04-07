@@ -1,28 +1,33 @@
-import { useReducer, useState } from "react";
-import { Link } from "react-router-dom";
-import { deleteJob } from "../../todo/actions";
-import reducer, { initState } from "../../todo/reducer";
+import { Link, useOutletContext } from "react-router-dom";
 
 function Todo() {
-  const [stt, dispatch] = useReducer(reducer, initState);
-  const {jobs} = JSON.parse(localStorage.getItem('job')) || []
-  console.log(jobs);
+  const [{todos}, dispatch] = useOutletContext();
   return (
     <>
       <h1>List Todo</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Todo</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {todos && todos.map((todo, index) => (
+            <tr key={todo.id}>
+              <td>{todo.todo}</td>
+              <td>{todo.status ? 'Done' : 'Pending'}</td>
+              <td>
+                <button>Edit</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       <div>
         <ul>
-          {jobs && jobs.map((job, index) => (
-            <li key={index}>
-              {job}
-              <span
-                style={{ paddingLeft: 10 }}
-                onClick={() => dispatch(deleteJob(index))}
-              >
-                &times;
-              </span>
-            </li>
-          ))}
+          
         </ul>
       </div>
       <div>

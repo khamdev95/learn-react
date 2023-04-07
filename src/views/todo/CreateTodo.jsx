@@ -1,20 +1,28 @@
-import reducer, { initState } from "../../todo/reducer";
-import { addJob, setJob } from "../../todo/actions";
-import { useReducer } from "react";
+import { useState } from "react";
+import { addTodo, addTodos } from "../../store/actions";
+import { useNavigate, useOutletContext } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid'
 
 function CreateTodo() {
-  const [{job}, dispatch] = useReducer(reducer, initState);
+  const [{}, dispatch] = useOutletContext();
+  const [todo, setTodo] = useState('')
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
-    dispatch(addJob(job));
+    dispatch(addTodos({
+      id: uuidv4(),
+      todo,
+      status: false
+    }));
+    navigate('/todo')
   };
   return (
     <>
       <h1>Create Todo</h1>
       <label>Input Job: </label>
       <input
-        value={job}
+        value={todo}
         onChange={(e) => {
-          dispatch(setJob(e.target.value));
+          setTodo(e.target.value)
         }}
       ></input>
       <div>

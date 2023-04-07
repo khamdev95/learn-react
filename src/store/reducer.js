@@ -1,7 +1,7 @@
 import { ADD_TODO, ADD_TODOS } from "./contants";
 const initState = {
   todos: [],
-  todo: "",
+  todo: null,
 };
 
 function reducer(state, action) {
@@ -15,6 +15,7 @@ function reducer(state, action) {
       return {
         ...state,
         todos: [...state.todos, action.payload],
+        todo: ''
       };
     default:
       throw new Error("Invalid action.");

@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from "../views/ErrorPage";
 import HomePage from "../views/HomePage";
-// import Todo from "../views/todo";
-// import CreateTodo from "../views/todo/CreateTodo";
+import Todo from "../views/todo";
+import CreateTodo from "../views/todo/CreateTodo";
 import Users from "../views/users";
 import CreateUser from "../views/users/CreateUser";
 import { addAction, editLoader, editAction, detailLoader, detailAction } from "./users";
@@ -36,6 +36,14 @@ const router = createBrowserRouter([
         element: <ShowUser/>,
         loader: detailLoader,
         action: detailAction
+      },
+      {
+        path: '/todo',
+        element: <Todo/>
+      },
+      {
+        path: '/create-todo',
+        element: <CreateTodo/>
       }
     ],
   },

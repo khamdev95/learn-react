@@ -1,6 +1,8 @@
-import { Outlet } from "react-router-dom";
-
+import { useReducer } from "react";
+import { Link, Outlet } from "react-router-dom";
+import reducer, {initState}  from '../store/reducer'
 function HomePage() {
+  const [stt, dispatch] = useReducer(reducer, initState);
   return(
     <>
       <div className="grid-layout">
@@ -8,13 +10,21 @@ function HomePage() {
             <h1>This is Header</h1>
         </header>
         <main>
-            <Outlet/>
+            <Outlet context={[stt, dispatch]}/>
         </main>
         <nav>
             <ul>
               <li>
-              <a href="/">Home</a>
+                <Link to='/'>
+                  User
+                </Link>
               </li>
+              <li>
+                <Link to='/todo'>
+                  TodoList
+                </Link>
+              </li>
+              
             </ul>
         </nav>
         <footer>

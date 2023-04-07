@@ -7,12 +7,13 @@ import reportWebVitals from './reportWebVitals';
 import {StoreProvider} from './store'
 import router from './router';
 import { RouterProvider } from 'react-router-dom';
+import HomePage from './views/HomePage';
 
 ReactDOM.render(
   <React.StrictMode>
     <RouterProvider router={router}>
       <StoreProvider>
-        <App />
+        <HomePage />
       </StoreProvider>
     </RouterProvider>
   </React.StrictMode>,
